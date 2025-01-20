@@ -7,6 +7,15 @@ import { validateAccessToken } from "app/utils/auth/validateAccessToken"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 
+interface CustomerCreateResponse {
+  customerCreate: {
+    customerUserErrors: any[];
+    customer: {
+      firstName?: string;
+    };
+  };
+}
+
 export const handleCreateUser = async (formData: FormData) => {
   const formDataObject = Object.fromEntries(formData)
   delete formDataObject["password_confirmation"]
